@@ -15,19 +15,19 @@ import 'test_border.dart' show TestBorder;
 
 Future<void> main() async {
   AutomatedTestWidgetsFlutterBinding();
-  final ui.Image rawImage = await decodeImageFromList(Uint8List.fromList(kTransparentImage));
+  final ui.Image rawImage =
+      await decodeImageFromList(Uint8List.fromList(kTransparentImage));
   final ImageProvider image = TestImageProvider(0, 0, image: rawImage);
 
   testWidgets('ShapeDecoration.image',
-  // TODO(polina-c): clean up leaks, https://github.com/flutter/flutter/issues/134787 [leaks-to-clean]
-  experimentalLeakTesting: LeakTesting.settings.withIgnoredAll(),
-  (WidgetTester tester) async {
+      // TODO(polina-c): clean up leaks, https://github.com/flutter/flutter/issues/134787 [leaks-to-clean]
+      experimentalLeakTesting: LeakTesting.settings.withIgnoredAll(),
+      (WidgetTester tester) async {
     await tester.pumpWidget(
       MaterialApp(
         home: DecoratedBox(
           decoration: ShapeDecoration(
-            shape: Border.all(color: Colors.white) +
-                   Border.all(),
+            shape: Border.all(color: Colors.white) + Border.all(),
             image: DecorationImage(
               image: image,
             ),
@@ -49,8 +49,7 @@ Future<void> main() async {
       MaterialApp(
         home: DecoratedBox(
           decoration: ShapeDecoration(
-            shape: Border.all(color: Colors.white) +
-                   Border.all(),
+            shape: Border.all(color: Colors.white) + Border.all(),
             color: Colors.blue,
           ),
         ),
@@ -95,9 +94,9 @@ Future<void> main() async {
   });
 
   testWidgets('TestBorder and Directionality - 2',
-  // TODO(polina-c): dispose ImageStreamCompleterHandle, https://github.com/flutter/flutter/issues/145599 [leaks-to-clean]
-  experimentalLeakTesting: LeakTesting.settings.withIgnoredAll(),
-  (WidgetTester tester) async {
+      // TODO(polina-c): dispose ImageStreamCompleterHandle, https://github.com/flutter/flutter/issues/145599 [leaks-to-clean]
+      experimentalLeakTesting: LeakTesting.settings.withIgnoredAll(),
+      (WidgetTester tester) async {
     final List<String> log = <String>[];
     await tester.pumpWidget(
       Directionality(
@@ -121,7 +120,8 @@ Future<void> main() async {
     );
   });
 
-  testWidgets('Does not crash with directional gradient', (WidgetTester tester) async {
+  testWidgets('Does not crash with directional gradient',
+      (WidgetTester tester) async {
     // Regression test for https://github.com/flutter/flutter/issues/76967.
 
     await tester.pumpWidget(
@@ -136,9 +136,7 @@ Future<void> main() async {
               colors: <Color>[Colors.red, Colors.black],
               stops: <double>[0.0, 0.4],
             ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(8.0)),
-            ),
+            shape: RoundedRectangleBorder(),
           ),
         ),
       ),

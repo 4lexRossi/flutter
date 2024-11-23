@@ -14,7 +14,8 @@ class SlidersDemo extends StatelessWidget {
   final SlidersDemoType type;
 
   String _title(BuildContext context) {
-    final GalleryLocalizations localizations = GalleryLocalizations.of(context)!;
+    final GalleryLocalizations localizations =
+        GalleryLocalizations.of(context)!;
     switch (type) {
       case SlidersDemoType.sliders:
         return localizations.demoSlidersTitle;
@@ -74,7 +75,8 @@ class _SlidersState extends State<_Sliders> with RestorationMixin {
 
   @override
   Widget build(BuildContext context) {
-    final GalleryLocalizations localizations = GalleryLocalizations.of(context)!;
+    final GalleryLocalizations localizations =
+        GalleryLocalizations.of(context)!;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 40),
       child: Column(
@@ -364,7 +366,7 @@ class _CustomRangeThumbShape extends RangeSliderThumbShape {
     }
     canvas.drawPath(
       thumbPath,
-      Paint()..color = colorTween.evaluate(enableAnimation)!,
+      Paint()..color = colorTween.evaluate(enableAnimation),
     );
   }
 }
@@ -411,7 +413,7 @@ class _CustomThumbShape extends SliderComponentShape {
     final Path thumbPath = _downTriangle(size, thumbCenter);
     canvas.drawPath(
       thumbPath,
-      Paint()..color = colorTween.evaluate(enableAnimation)!,
+      Paint()..color = colorTween.evaluate(enableAnimation),
     );
   }
 }
@@ -521,7 +523,8 @@ class _CustomSlidersState extends State<_CustomSliders> with RestorationMixin {
       _continuousEndCustomValue.value,
     );
     final ThemeData theme = Theme.of(context);
-    final GalleryLocalizations localizations = GalleryLocalizations.of(context)!;
+    final GalleryLocalizations localizations =
+        GalleryLocalizations.of(context)!;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 40),
       child: Column(

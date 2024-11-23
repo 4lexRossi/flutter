@@ -3,13 +3,14 @@
 // found in the LICENSE file.
 
 import 'package:flutter/material.dart';
-import 'package:flutter/semantics.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../widgets/semantics_tester.dart';
 
 void main() {
-  testWidgets('Performing SemanticsAction.showOnScreen does not crash if node no longer exist', (WidgetTester tester) async {
+  testWidgets(
+      'Performing SemanticsAction.showOnScreen does not crash if node no longer exist',
+      (WidgetTester tester) async {
     // Regression test for https://github.com/flutter/flutter/issues/100358.
 
     final SemanticsTester semantics = SemanticsTester(tester);
@@ -24,7 +25,8 @@ void main() {
       ),
     );
 
-    final int nodeId = tester.semantics.find(find.bySemanticsLabel('Hello World')).id;
+    final int nodeId =
+        tester.semantics.find(find.bySemanticsLabel('Hello World')).id;
 
     await tester.pumpWidget(
       Directionality(

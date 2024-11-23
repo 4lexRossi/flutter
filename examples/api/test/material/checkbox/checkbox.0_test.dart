@@ -40,19 +40,19 @@ void main() {
       Colors.white,
     );
     expect(
-      checkbox.fillColor!.resolve(<MaterialState>{}),
+      checkbox.fillColor!.resolve(<WidgetState>{}),
       Colors.red,
     );
     expect(
-      checkbox.fillColor!.resolve(<MaterialState>{MaterialState.pressed}),
+      checkbox.fillColor!.resolve(<WidgetState>{WidgetState.pressed}),
       Colors.blue,
     );
     expect(
-      checkbox.fillColor!.resolve(<MaterialState>{MaterialState.hovered}),
+      checkbox.fillColor!.resolve(<WidgetState>{WidgetState.hovered}),
       Colors.blue,
     );
     expect(
-      checkbox.fillColor!.resolve(<MaterialState>{MaterialState.focused}),
+      checkbox.fillColor!.resolve(<WidgetState>{WidgetState.focused}),
       Colors.blue,
     );
   });

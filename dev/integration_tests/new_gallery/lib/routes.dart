@@ -2,7 +2,6 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:dual_screen/dual_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'deferred_widget.dart';
@@ -123,8 +122,10 @@ class RouteConfiguration {
     for (final Path path in paths) {
       final RegExp regExpPattern = RegExp(path.pattern);
       if (regExpPattern.hasMatch(settings.name!)) {
-        final RegExpMatch firstMatch = regExpPattern.firstMatch(settings.name!)!;
-        final String? match = (firstMatch.groupCount == 1) ? firstMatch.group(1) : null;
+        final RegExpMatch firstMatch =
+            regExpPattern.firstMatch(settings.name!)!;
+        final String? match =
+            (firstMatch.groupCount == 1) ? firstMatch.group(1) : null;
         if (kIsWeb) {
           return NoAnimationMaterialPageRoute<void>(
             builder: (BuildContext context) => path.builder(context, match),

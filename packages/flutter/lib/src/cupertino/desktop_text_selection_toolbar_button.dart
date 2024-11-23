@@ -116,7 +116,6 @@ class _CupertinoDesktopTextSelectionToolbarButtonState
         onExit: _onExit,
         child: CupertinoButton(
           alignment: Alignment.centerLeft,
-          borderRadius: const BorderRadius.all(Radius.circular(4.0)),
           color: _isHovered ? CupertinoTheme.of(context).primaryColor : null,
           minSize: 0.0,
           onPressed: widget.onPressed,

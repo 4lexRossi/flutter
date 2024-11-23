@@ -28,21 +28,23 @@ class MaterialDemoThemeData {
         color: _colorScheme.primary,
       ),
       checkboxTheme: CheckboxThemeData(
-        fillColor: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
-          if (states.contains(MaterialState.disabled)) {
+        fillColor:
+            WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
+          if (states.contains(WidgetState.disabled)) {
             return null;
           }
-          return states.contains(MaterialState.selected)
+          return states.contains(WidgetState.selected)
               ? _colorScheme.primary
               : null;
         }),
       ),
       radioTheme: RadioThemeData(
-        fillColor: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
-          if (states.contains(MaterialState.disabled)) {
+        fillColor:
+            WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
+          if (states.contains(WidgetState.disabled)) {
             return null;
           }
-          return states.contains(MaterialState.selected)
+          return states.contains(WidgetState.selected)
               ? _colorScheme.primary
               : null;
         }),
@@ -51,19 +53,21 @@ class MaterialDemoThemeData {
         behavior: SnackBarBehavior.floating,
       ),
       switchTheme: SwitchThemeData(
-        thumbColor: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
-          if (states.contains(MaterialState.disabled)) {
+        thumbColor:
+            WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
+          if (states.contains(WidgetState.disabled)) {
             return null;
           }
-          return states.contains(MaterialState.selected)
+          return states.contains(WidgetState.selected)
               ? _colorScheme.primary
               : null;
         }),
-        trackColor: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
-          if (states.contains(MaterialState.disabled)) {
+        trackColor:
+            WidgetStateProperty.resolveWith<Color?>((Set<WidgetState> states) {
+          if (states.contains(WidgetState.disabled)) {
             return null;
           }
-          return states.contains(MaterialState.selected)
+          return states.contains(WidgetState.selected)
               ? _colorScheme.primary.withAlpha(0x80)
               : null;
         }),
@@ -74,9 +78,7 @@ class MaterialDemoThemeData {
     primaryContainer: Color(0xFF6200EE),
     secondary: Color(0xFFFF5722),
     secondaryContainer: Color(0xFFFF5722),
-    background: Colors.white,
     surface: Color(0xFFF2F2F2),
-    onBackground: Colors.black,
     onSurface: Colors.black,
     error: Colors.red,
     onError: Colors.white,

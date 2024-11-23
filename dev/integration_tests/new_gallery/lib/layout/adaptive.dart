@@ -5,7 +5,6 @@
 import 'dart:ui';
 
 import 'package:adaptive_breakpoints/adaptive_breakpoints.dart';
-import 'package:dual_screen/dual_screen.dart';
 import 'package:flutter/material.dart';
 
 /// The maximum width taken up by each item on the home screen.

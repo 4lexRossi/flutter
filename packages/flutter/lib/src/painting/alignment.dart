@@ -6,8 +6,6 @@ import 'dart:ui' as ui show lerpDouble;
 
 import 'package:flutter/foundation.dart';
 
-import 'basic_types.dart';
-
 /// Base class for [Alignment] that allows for text-direction aware
 /// resolution.
 ///
@@ -86,7 +84,8 @@ abstract class AlignmentGeometry {
   /// into a concrete [Alignment] using [resolve].
   ///
   /// {@macro dart.ui.shadow.lerp}
-  static AlignmentGeometry? lerp(AlignmentGeometry? a, AlignmentGeometry? b, double t) {
+  static AlignmentGeometry? lerp(
+      AlignmentGeometry? a, AlignmentGeometry? b, double t) {
     if (identical(a, b)) {
       return a;
     }
@@ -133,10 +132,10 @@ abstract class AlignmentGeometry {
 
   @override
   bool operator ==(Object other) {
-    return other is AlignmentGeometry
-        && other._x == _x
-        && other._start == _start
-        && other._y == _y;
+    return other is AlignmentGeometry &&
+        other._x == _x &&
+        other._start == _start &&
+        other._y == _y;
   }
 
   @override
@@ -339,10 +338,12 @@ class Alignment extends AlignmentGeometry {
       return a;
     }
     if (a == null) {
-      return Alignment(ui.lerpDouble(0.0, b!.x, t)!, ui.lerpDouble(0.0, b.y, t)!);
+      return Alignment(
+          ui.lerpDouble(0.0, b!.x, t)!, ui.lerpDouble(0.0, b.y, t)!);
     }
     if (b == null) {
-      return Alignment(ui.lerpDouble(a.x, 0.0, t)!, ui.lerpDouble(a.y, 0.0, t)!);
+      return Alignment(
+          ui.lerpDouble(a.x, 0.0, t)!, ui.lerpDouble(a.y, 0.0, t)!);
     }
     return Alignment(ui.lerpDouble(a.x, b.x, t)!, ui.lerpDouble(a.y, b.y, t)!);
   }
@@ -379,7 +380,7 @@ class Alignment extends AlignmentGeometry {
       return 'Alignment.bottomRight';
     }
     return 'Alignment(${x.toStringAsFixed(1)}, '
-                     '${y.toStringAsFixed(1)})';
+        '${y.toStringAsFixed(1)})';
   }
 
   @override
@@ -447,7 +448,8 @@ class AlignmentDirectional extends AlignmentGeometry {
   static const AlignmentDirectional topEnd = AlignmentDirectional(1.0, -1.0);
 
   /// The center point along the "start" edge.
-  static const AlignmentDirectional centerStart = AlignmentDirectional(-1.0, 0.0);
+  static const AlignmentDirectional centerStart =
+      AlignmentDirectional(-1.0, 0.0);
 
   /// The center point, both horizontally and vertically.
   ///
@@ -459,13 +461,15 @@ class AlignmentDirectional extends AlignmentGeometry {
   static const AlignmentDirectional centerEnd = AlignmentDirectional(1.0, 0.0);
 
   /// The bottom corner on the "start" side.
-  static const AlignmentDirectional bottomStart = AlignmentDirectional(-1.0, 1.0);
+  static const AlignmentDirectional bottomStart =
+      AlignmentDirectional(-1.0, 1.0);
 
   /// The center point along the bottom edge.
   ///
   /// Consider using [Alignment.bottomCenter] instead, as it does not
   /// need to be [resolve]d to be used.
-  static const AlignmentDirectional bottomCenter = AlignmentDirectional(0.0, 1.0);
+  static const AlignmentDirectional bottomCenter =
+      AlignmentDirectional(0.0, 1.0);
 
   /// The bottom corner on the "end" side.
   static const AlignmentDirectional bottomEnd = AlignmentDirectional(1.0, 1.0);
@@ -509,7 +513,8 @@ class AlignmentDirectional extends AlignmentGeometry {
   /// Integer divides the [AlignmentDirectional] in each dimension by the given factor.
   @override
   AlignmentDirectional operator ~/(double other) {
-    return AlignmentDirectional((start ~/ other).toDouble(), (y ~/ other).toDouble());
+    return AlignmentDirectional(
+        (start ~/ other).toDouble(), (y ~/ other).toDouble());
   }
 
   /// Computes the remainder in each dimension by the given factor.
@@ -523,22 +528,27 @@ class AlignmentDirectional extends AlignmentGeometry {
   /// If either is null, this function interpolates from [AlignmentDirectional.center].
   ///
   /// {@macro dart.ui.shadow.lerp}
-  static AlignmentDirectional? lerp(AlignmentDirectional? a, AlignmentDirectional? b, double t) {
+  static AlignmentDirectional? lerp(
+      AlignmentDirectional? a, AlignmentDirectional? b, double t) {
     if (identical(a, b)) {
       return a;
     }
     if (a == null) {
-      return AlignmentDirectional(ui.lerpDouble(0.0, b!.start, t)!, ui.lerpDouble(0.0, b.y, t)!);
+      return AlignmentDirectional(
+          ui.lerpDouble(0.0, b!.start, t)!, ui.lerpDouble(0.0, b.y, t)!);
     }
     if (b == null) {
-      return AlignmentDirectional(ui.lerpDouble(a.start, 0.0, t)!, ui.lerpDouble(a.y, 0.0, t)!);
+      return AlignmentDirectional(
+          ui.lerpDouble(a.start, 0.0, t)!, ui.lerpDouble(a.y, 0.0, t)!);
     }
-    return AlignmentDirectional(ui.lerpDouble(a.start, b.start, t)!, ui.lerpDouble(a.y, b.y, t)!);
+    return AlignmentDirectional(
+        ui.lerpDouble(a.start, b.start, t)!, ui.lerpDouble(a.y, b.y, t)!);
   }
 
   @override
   Alignment resolve(TextDirection? direction) {
-    assert(direction != null, 'Cannot resolve $runtimeType without a TextDirection.');
+    assert(direction != null,
+        'Cannot resolve $runtimeType without a TextDirection.');
     return switch (direction!) {
       TextDirection.rtl => Alignment(-start, y),
       TextDirection.ltr => Alignment(start, y),
@@ -574,7 +584,7 @@ class AlignmentDirectional extends AlignmentGeometry {
       return 'AlignmentDirectional.bottomEnd';
     }
     return 'AlignmentDirectional(${start.toStringAsFixed(1)}, '
-                                '${y.toStringAsFixed(1)})';
+        '${y.toStringAsFixed(1)})';
   }
 
   @override
@@ -640,7 +650,8 @@ class _MixedAlignment extends AlignmentGeometry {
 
   @override
   Alignment resolve(TextDirection? direction) {
-    assert(direction != null, 'Cannot resolve $runtimeType without a TextDirection.');
+    assert(direction != null,
+        'Cannot resolve $runtimeType without a TextDirection.');
     return switch (direction!) {
       TextDirection.rtl => Alignment(_x - _start, _y),
       TextDirection.ltr => Alignment(_x + _start, _y),
@@ -676,8 +687,10 @@ class TextAlignVertical {
   /// Aligns a TextField's input Text with the topmost location within a
   /// TextField's input box.
   static const TextAlignVertical top = TextAlignVertical(y: -1.0);
+
   /// Aligns a TextField's input Text to the center of the TextField.
   static const TextAlignVertical center = TextAlignVertical(y: 0.0);
+
   /// Aligns a TextField's input Text with the bottommost location within a
   /// TextField.
   static const TextAlignVertical bottom = TextAlignVertical(y: 1.0);

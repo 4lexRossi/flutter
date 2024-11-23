@@ -87,7 +87,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin<Home> {
   Widget build(BuildContext context) {
     return NavigatorPopHandler(
       onPop: () {
-        final NavigatorState navigator = navigatorKeys[selectedIndex].currentState!;
+        final NavigatorState navigator =
+            navigatorKeys[selectedIndex].currentState;
         navigator.pop();
       },
       child: Scaffold(
@@ -163,7 +164,7 @@ class RootPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextStyle headlineSmall = Theme.of(context).textTheme.headlineSmall!;
+    final TextStyle headlineSmall = Theme.of(context).textTheme.headlineSmall;
     final ButtonStyle buttonStyle = ElevatedButton.styleFrom(
       backgroundColor: destination.color,
       foregroundColor: Colors.white,
@@ -208,7 +209,8 @@ class RootPage extends StatelessWidget {
               onPressed: () {
                 showDialog<void>(
                   context: context,
-                  useRootNavigator: true, // ignore: avoid_redundant_argument_values
+                  useRootNavigator:
+                      true, // ignore: avoid_redundant_argument_values
                   builder: _buildDialog,
                 );
               },
@@ -283,12 +285,9 @@ class ListPage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
               child: OutlinedButton(
                 style: buttonStyle.copyWith(
-                  backgroundColor: MaterialStatePropertyAll<Color>(
-                    Color.lerp(
-                      destination.color[100],
-                      Colors.white,
-                      index / itemCount
-                    )!,
+                  backgroundColor: WidgetStatePropertyAll<Color>(
+                    Color.lerp(destination.color[100], Colors.white,
+                        index / itemCount)!,
                   ),
                 ),
                 onPressed: () {

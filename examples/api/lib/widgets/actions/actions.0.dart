@@ -98,7 +98,7 @@ class _SaveButtonState extends State<SaveButton> {
           icon: const Icon(Icons.save),
           label: Text('$savedValue'),
           style: ButtonStyle(
-            foregroundColor: MaterialStatePropertyAll<Color>(
+            foregroundColor: WidgetStatePropertyAll<Color>(
               widget.valueNotifier.value ? Colors.red : Colors.green,
             ),
           ),
@@ -151,7 +151,9 @@ class _ActionsExampleState extends State<ActionsExample> {
                       builder: (BuildContext context, Widget? child) {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Text('${model.data.value}', style: Theme.of(context).textTheme.headlineMedium),
+                          child: Text('${model.data.value}',
+                              style:
+                                  Theme.of(context).textTheme.headlineMedium),
                         );
                       }),
                   IconButton(

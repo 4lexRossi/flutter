@@ -3,7 +3,6 @@
 // found in the LICENSE file.
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -75,7 +74,7 @@ void main() {
       CupertinoApp(
         home: Center(
           child: CupertinoDesktopTextSelectionToolbarButton(
-            onPressed: () { },
+            onPressed: () {},
             child: const Text('Tap me'),
           ),
         ),
@@ -114,7 +113,8 @@ void main() {
     expect(opacity.opacity.value, 1.0);
   });
 
-  testWidgets('passing null to onPressed disables the button', (WidgetTester tester) async {
+  testWidgets('passing null to onPressed disables the button',
+      (WidgetTester tester) async {
     await tester.pumpWidget(
       const CupertinoApp(
         home: Center(

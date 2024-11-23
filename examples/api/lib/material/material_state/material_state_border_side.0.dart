@@ -28,10 +28,12 @@ class MaterialStateBorderSideExample extends StatefulWidget {
   const MaterialStateBorderSideExample({super.key});
 
   @override
-  State<MaterialStateBorderSideExample> createState() => _MaterialStateBorderSideExampleState();
+  State<MaterialStateBorderSideExample> createState() =>
+      _MaterialStateBorderSideExampleState();
 }
 
-class _MaterialStateBorderSideExampleState extends State<MaterialStateBorderSideExample> {
+class _MaterialStateBorderSideExampleState
+    extends State<MaterialStateBorderSideExample> {
   bool isSelected = true;
 
   @override
@@ -44,8 +46,8 @@ class _MaterialStateBorderSideExampleState extends State<MaterialStateBorderSide
           isSelected = value;
         });
       },
-      side: MaterialStateBorderSide.resolveWith((Set<MaterialState> states) {
-        if (states.contains(MaterialState.selected)) {
+      side: WidgetStateBorderSide.resolveWith((Set<WidgetState> states) {
+        if (states.contains(WidgetState.selected)) {
           return const BorderSide(color: Colors.red);
         }
         return null; // Defer to default value on the theme or widget.

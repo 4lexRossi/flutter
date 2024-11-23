@@ -2,7 +2,6 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:dual_screen/dual_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
@@ -69,7 +68,8 @@ class GalleryApp extends StatelessWidget {
             initialRoute: initialRoute,
             supportedLocales: GalleryLocalizations.supportedLocales,
             locale: options.locale,
-            localeListResolutionCallback: (List<Locale>? locales, Iterable<Locale> supportedLocales) {
+            localeListResolutionCallback:
+                (List<Locale>? locales, Iterable<Locale> supportedLocales) {
               deviceLocale = locales?.first;
               return basicLocaleListResolution(locales, supportedLocales);
             },
