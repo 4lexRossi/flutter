@@ -102,6 +102,7 @@ class CutCornersBorder extends OutlineInputBorder {
     if (gapStart == null || gapExtent <= 0 || gapPercentage == 0) {
       canvas.drawPath(_notchedCornerPath(outer.middleRect), paint);
     } else {
+<<<<<<< HEAD
       final double? extent =
           lerpDouble(0.0, gapExtent + gapPadding * 2, gapPercentage);
       switch (textDirection!) {
@@ -120,6 +121,14 @@ class CutCornersBorder extends OutlineInputBorder {
             break;
           }
       }
+=======
+      final double extent = lerpDouble(0.0, gapExtent + gapPadding * 2, gapPercentage)!;
+      final double start = switch (textDirection!) {
+        TextDirection.rtl => gapStart + gapPadding - extent,
+        TextDirection.ltr => gapStart - gapPadding,
+      };
+      canvas.drawPath(_notchedCornerPath(outer.middleRect, start, extent), paint);
+>>>>>>> dec2ee5c1f98f8e84a7d5380c05eb8a3d0a81668
     }
   }
 }

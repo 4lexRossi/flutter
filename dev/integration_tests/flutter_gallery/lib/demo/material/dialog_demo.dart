@@ -68,10 +68,17 @@ class DialogDemoState extends State<DialogDemo> {
   void showDemoDialog<T>({required BuildContext context, Widget? child}) {
     showDialog<T>(
       context: context,
+<<<<<<< HEAD
       builder: (BuildContext context) => child,
     ).then((T? value) {
       // The value passed to Navigator.pop() or null.
       if (value != null) {
+=======
+      builder: (BuildContext context) => child!,
+    )
+    .then((T? value) { // The value passed to Navigator.pop() or null.
+      if (context.mounted && value != null) {
+>>>>>>> dec2ee5c1f98f8e84a7d5380c05eb8a3d0a81668
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text('You selected: $value'),
         ));
@@ -192,7 +199,15 @@ class DialogDemoState extends State<DialogDemo> {
               showTimePicker(
                 context: context,
                 initialTime: _selectedTime!,
+<<<<<<< HEAD
               ).then((TimeOfDay? value) {
+=======
+              )
+              .then((TimeOfDay? value) {
+                if (!context.mounted) {
+                  return;
+                }
+>>>>>>> dec2ee5c1f98f8e84a7d5380c05eb8a3d0a81668
                 if (value != null && value != _selectedTime) {
                   _selectedTime = value;
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(

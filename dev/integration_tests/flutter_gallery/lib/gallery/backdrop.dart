@@ -245,6 +245,7 @@ class _BackdropState extends State<Backdrop>
   }
 
   void _handleDragEnd(DragEndDetails details) {
+<<<<<<< HEAD
     if (_controller!.isAnimating ||
         _controller!.status == AnimationStatus.completed) {
       return;
@@ -266,6 +267,22 @@ class _BackdropState extends State<Backdrop>
     final bool isOpen = status == AnimationStatus.completed ||
         status == AnimationStatus.forward;
     _controller!.fling(velocity: isOpen ? -2.0 : 2.0);
+=======
+    if (!_controller!.isDismissed) {
+      return;
+    }
+
+    final double flingVelocity = details.velocity.pixelsPerSecond.dy / _backdropHeight;
+    _controller!.fling(velocity: switch (flingVelocity) {
+      < 0.0 => math.max(2.0, -flingVelocity),
+      > 0.0 => math.min(-2.0, -flingVelocity),
+      _ => _controller!.value < 0.5 ? -2.0 : 2.0,
+    });
+  }
+
+  void _toggleFrontLayer() {
+    _controller!.fling(velocity: _controller!.isForwardOrCompleted ? -2.0 : 2.0);
+>>>>>>> dec2ee5c1f98f8e84a7d5380c05eb8a3d0a81668
   }
 
   Widget _buildStack(BuildContext context, BoxConstraints constraints) {
@@ -304,7 +321,7 @@ class _BackdropState extends State<Backdrop>
                 AnimationStatus.dismissed,
                 controller: _controller,
                 child: Visibility(
-                  visible: _controller!.status != AnimationStatus.completed,
+                  visible: !_controller!.isCompleted,
                   maintainState: true,
                   child: widget.backLayer!,
                 ),

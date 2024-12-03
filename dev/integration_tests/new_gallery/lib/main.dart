@@ -49,7 +49,6 @@ class GalleryApp extends StatelessWidget {
       child: Builder(
         builder: (BuildContext context) {
           final GalleryOptions options = GalleryOptions.of(context);
-          final bool hasHinge = MediaQuery.of(context).hinge?.bounds != null;
           return MaterialApp(
             restorationScopeId: 'rootGallery',
             title: 'Flutter Gallery',
@@ -74,7 +73,7 @@ class GalleryApp extends StatelessWidget {
               return basicLocaleListResolution(locales, supportedLocales);
             },
             onGenerateRoute: (RouteSettings settings) =>
-                RouteConfiguration.onGenerateRoute(settings, hasHinge),
+                RouteConfiguration.onGenerateRoute(settings),
           );
         },
       ),

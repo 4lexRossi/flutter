@@ -22,8 +22,13 @@ import '../demos/reference/motion_demo_shared_y_axis_transition.dart';
 import '../demos/reference/motion_demo_shared_z_axis_transition.dart';
 import '../demos/reference/transformations_demo.dart'
     deferred as transformations_demo;
+<<<<<<< HEAD
 import '../demos/reference/two_pane_demo.dart' deferred as twopane_demo;
 import '../demos/reference/typography_demo.dart' deferred as typography;
+=======
+import '../demos/reference/typography_demo.dart'
+    deferred as typography;
+>>>>>>> dec2ee5c1f98f8e84a7d5380c05eb8a3d0a81668
 import '../gallery_localizations.dart';
 import '../gallery_localizations_en.dart';
 import 'icons.dart';
@@ -44,15 +49,11 @@ enum GalleryDemoCategory {
   }
 
   String? displayTitle(GalleryLocalizations localizations) {
-    switch (this) {
-      case GalleryDemoCategory.other:
-        return localizations.homeCategoryReference;
-      case GalleryDemoCategory.material:
-      case GalleryDemoCategory.cupertino:
-        return toString();
-      case GalleryDemoCategory.study:
-    }
-    return null;
+    return switch (this) {
+      study => null,
+      material || cupertino => toString(),
+      other => localizations.homeCategoryReference,
+    };
   }
 }
 
@@ -1167,6 +1168,7 @@ class Demos {
   static List<GalleryDemo> otherDemos(GalleryLocalizations localizations) {
     return <GalleryDemo>[
       GalleryDemo(
+<<<<<<< HEAD
         title: localizations.demoTwoPaneTitle,
         icon: GalleryIcons.bottomSheetPersistent,
         slug: 'two-pane',
@@ -1215,6 +1217,8 @@ class Demos {
         category: GalleryDemoCategory.other,
       ),
       GalleryDemo(
+=======
+>>>>>>> dec2ee5c1f98f8e84a7d5380c05eb8a3d0a81668
         title: localizations.demoMotionTitle,
         icon: GalleryIcons.animation,
         slug: 'motion',

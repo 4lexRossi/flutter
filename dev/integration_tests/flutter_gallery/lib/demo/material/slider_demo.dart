@@ -86,6 +86,7 @@ class _CustomRangeThumbShape extends RangeSliderThumbShape {
     );
 
     final double size = _thumbSize * sizeTween.evaluate(enableAnimation);
+<<<<<<< HEAD
     late Path thumbPath;
     switch (textDirection) {
       case TextDirection.rtl:
@@ -111,6 +112,15 @@ class _CustomRangeThumbShape extends RangeSliderThumbShape {
     }
     canvas.drawPath(
         thumbPath, Paint()..color = colorTween.evaluate(enableAnimation));
+=======
+    final Path thumbPath = switch ((textDirection!, thumb!)) {
+      (TextDirection.rtl, Thumb.start) => _rightTriangle(size, center),
+      (TextDirection.rtl, Thumb.end)   => _leftTriangle(size, center),
+      (TextDirection.ltr, Thumb.start) => _leftTriangle(size, center),
+      (TextDirection.ltr, Thumb.end)   => _rightTriangle(size, center),
+    };
+    canvas.drawPath(thumbPath, Paint()..color = colorTween.evaluate(enableAnimation)!);
+>>>>>>> dec2ee5c1f98f8e84a7d5380c05eb8a3d0a81668
   }
 }
 
